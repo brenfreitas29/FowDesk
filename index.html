@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AutoArchitect - Site em 30 Segundos para Negócios Locais</title>
+  <meta name="description" content="Crie um site profissional e otimizado para Google em 30 segundos. Ideal para restaurantes, serviços e delivery. A partir de R$XX/mês. Sem complicação.">
+  <meta name="keywords" content="site para negocio local, site em 30 segundos, site para restaurante, site para delivery, criar site whatsapp">
+  <meta name="theme-color" content="#0f172a">
+  
+  <link rel="canonical" href="https://autoarchitect-platform.vercel.app/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-overlay">
+
+  <header class="app-header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" id="logoHomeLink">
+        <div class="logo-icon-svg" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="2" y="2" width="8" height="8" rx="2"></rect>
+            <rect x="14" y="2" width="8" height="8" rx="2"></rect>
+            <rect x="14" y="14" width="8" height="8" rx="2"></rect>
+            <path d="M6 10v4a2 2 0 0 0 2 2h6"></path>
+          </svg>
+        </div>
+        <span>AutoArchitect</span>
+      </a>
+
+      <nav class="desktop-nav" id="desktopPublicNav">
+        <a href="#prova-social" class="nav-link nav-public-link">Resultados</a>
+        <a href="#como-funciona" class="nav-link nav-public-link">Como Funciona</a>
+        <a href="#faq" class="nav-link nav-public-link">Dúvidas</a>
+      </nav>
+
+      <div class="header-right-actions">
+        <div class="auth-buttons-group">
+          <button type="button" class="btn btn-ghost btn-sm" id="btnHeaderLogin">Sign In</button>
+          <a href="#contato" class="btn btn-primary btn-sm">CRIAR MEU SITE →</a>
+          <button type="button" class="btn btn-outline btn-sm" id="btnBackToPublicSite" style="display:none;">Voltar ao Site</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="publicSiteView" class="view-container">
+      
+      <!-- HERO SECTION -->
+      <section class="hero section">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-main-title">Seu Site Profissional Pronto em 30 Segundos. Sem Complicação.</h1>
+            <p class="hero-subtitle">Ideal para restaurantes, serviços locais, marmitas e delivery. Chega de perder cliente por não ter site.</p>
+
+            <div class="hero-actions">
+              <a href="#contato" class="btn btn-primary btn-pulse btn-shimmer" id="btnHeroCta">CRIAR MEU SITE AGORA →</a>
+              <a href="#demonstracao" class="btn btn-secondary" id="btnHeroDemo">▶ Ver demonstração de 30s</a>
+            </div>
+
+            <div class="trust-row">
+              <span>✓ Sem cartão de crédito</span>
+              <span>✓ Cancele quando quiser</span>
+              <span>✓ 7 dias de garantia</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROVA SOCIAL SECTION (NOVA SEÇÃO) -->
+      <section class="section social-proof reveal" id="prova-social">
+        <div class="container">
+          <div style="text-align:center;">
+            <h2>Negócios que já estão faturando mais</h2>
+            <p class="text-sub" style="margin-top:8px;">Veja como clientes reais aumentaram vendas com o AutoArchitect</p>
+          </div>
+
+          <div class="social-proof-grid">
+            <div class="proof-card">
+              <div style="height:160px; background:rgba(255,255,255,0.05); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:2.5rem; margin-bottom:16px;">
+                🍕
+              </div>
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <h3 style="font-size:1.1rem; margin-top:8px;">Restaurante Sabor Caseiro</h3>
+              <p style="color:var(--color-text-muted); font-size:0.95rem; margin-top:6px;">"Aumentou os pedidos em 40% logo na primeira semana com o site novo."</p>
+            </div>
+
+            <div class="proof-card">
+              <div style="height:160px; background:rgba(255,255,255,0.05); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:2.5rem; margin-bottom:16px;">
+                🛠️
+              </div>
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <h3 style="font-size:1.1rem; margin-top:8px;">Dedetizadora Zona Sul</h3>
+              <p style="color:var(--color-text-muted); font-size:0.95rem; margin-top:6px;">"Zerou completamente a dependência de panfletos físicos na região."</p>
+            </div>
+
+            <div class="proof-card">
+              <div style="height:160px; background:rgba(255,255,255,0.05); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-size:2.5rem; margin-bottom:16px;">
+                🎂
+              </div>
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <h3 style="font-size:1.1rem; margin-top:8px;">Doceria da Lu</h3>
+              <p style="color:var(--color-text-muted); font-size:0.95rem; margin-top:6px;">"Vendeu 3 bolos de festa em menos de 2 horas direto pelo site novo."</p>
+            </div>
+          </div>
+
+          <p class="proof-disclaimer">*Resultados reais de clientes</p>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA SECTION -->
+      <section class="section section-dark reveal" id="como-funciona">
+        <div class="container">
+          <div style="text-align:center;">
+            <h2>Como Funciona em 3 Passos Simples</h2>
+            <p class="text-sub" style="margin-top:8px;">Sem código, sem enrolação. Seu site pronto rapidamente.</p>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-icon">📱</div>
+              <h3>Passo 1</h3>
+              <h4 style="color:var(--color-emerald); margin-bottom:8px;">Você envia suas informações por WhatsApp</h4>
+              <p>Fotos, telefone, endereço. Nada técnico.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-icon">⚙️⚡</div>
+              <h3>Passo 2</h3>
+              <h4 style="color:var(--color-emerald); margin-bottom:8px;">Mágica em 30 segundos</h4>
+              <p>Nossa IA cria o site perfeito para o seu negócio.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-icon">🚀</div>
+              <h3>Passo 3</h3>
+              <h4 style="color:var(--color-emerald); margin-bottom:8px;">Seu site no ar e no Google</h4>
+              <p>Já otimizado para aparecer no Google e Google Maps.</p>
+            </div>
+          </div>
+
+          <!-- DEMO VIDEO EMBED -->
+          <div id="demonstracao" style="scroll-margin-top:100px;">
+            <div class="video-title">Assista: da conversa no WhatsApp ao site no ar em 30 segundos</div>
+            <div class="video-container">
+              <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?controls=0" title="Demonstração AutoArchitect 30 segundos" allowfullscreen loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMULÁRIO DE CONTATO SECTION -->
+      <section class="section form-section reveal" id="contato">
+        <div class="container">
+          <div style="text-align:center; margin-bottom:32px;">
+            <h2>Crie Seu Site Profissional Agora</h2>
+            <p class="text-sub">Preencha os dados abaixo e veja seu site pronto em poucos instantes</p>
+          </div>
+
+          <div class="form-container">
+            <form id="leadContactForm" novalidate>
+              <div class="form-group">
+                <label for="inputNome">Nome Completo *</label>
+                <input type="text" id="inputNome" placeholder="Seu nome completo" required>
+                <div class="error-message" id="errorNome">Campo obrigatório</div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputWhatsapp">WhatsApp com DDD *</label>
+                <input type="tel" id="inputWhatsapp" placeholder="(11) 99999-9999" required>
+                <div class="error-message" id="errorWhatsapp">Campo obrigatório</div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputNicho">Nicho do Negócio *</label>
+                <input type="text" id="inputNicho" placeholder="Ex: Marmita, Pedreiro, Barbeiro..." required>
+                <div class="error-message" id="errorNicho">Campo obrigatório</div>
+              </div>
+
+              <div class="form-consent">
+                <input type="checkbox" id="checkConsent" required>
+                <label for="checkConsent">✅ Aceito receber contato por WhatsApp sobre meu site</label>
+              </div>
+              <div class="error-message" id="errorConsent" style="margin-top:-16px; margin-bottom:16px;">Por favor, aceite os termos de contato</div>
+
+              <button type="submit" class="btn btn-primary btn-pulse btn-shimmer submit-btn" id="btnFormSubmit">
+                <span class="btn-text">CRIAR MEU SITE AGORA →</span>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ ACCORDION SECTION -->
+      <section class="section section-dark reveal" id="faq">
+        <div class="container">
+          <div style="text-align:center;">
+            <h2>Dúvidas Frequentes</h2>
+            <p class="text-sub" style="margin-top:8px;">Tudo o que você precisa saber para começar hoje</p>
+          </div>
+
+          <div class="faq-container" id="faqAccordionContainer">
+            
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>O site fica pronto em 30 segundos mesmo?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Sim! Assista ao vídeo na seção "Como Funciona" e veja na prática. Você envia as informações, nossa IA processa e o site fica no ar. Em casos complexos, levamos até 2 horas.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Meu negócio vai aparecer no Google?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Sim. Todos os sites já saem otimizados para SEO local e integrados ao Google Meu Negócio. Você começa a aparecer nas buscas em até 7 dias.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Preciso pagar mensalidade?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Sim, o investimento é de R$XX/mês. Isso inclui hospedagem, manutenção, atualizações e suporte. Sem taxas surpresa. Cancele quando quiser.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>E se eu não gostar do site?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Você tem 7 dias de garantia incondicional. Se não gostar, devolvemos 100% do valor. Mas temos 98% de aprovação.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Vocês vão mexer no meu Instagram ou WhatsApp?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Não. Criamos apenas o site. Suas redes sociais continuam sob seu controle total. O site é um canal extra de vendas.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-question">
+                <span>Preciso ter domínio próprio?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                Não precisa. Fornecemos um subdomínio profissional (seunegocio.autoarchitect.com). Se quiser seu próprio domínio (.com.br), configuramos para você sem custo.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- AUTHENTICATED ENTERPRISE PORTAL -->
+    <div id="appPortalView" class="view-container" style="display:none;">
+      <div class="portal-layout">
+        
+        <aside class="portal-sidebar" id="portalSidebar">
+          <div class="sidebar-top-header"><span class="sidebar-heading">AutoArchitect</span></div>
+          <div class="sidebar-group-label" style="font-size:0.75rem; font-weight:700; color:var(--color-slate-muted); margin-bottom:8px;">WORKSPACE</div>
+          <nav class="portal-nav-list">
+            <button type="button" class="portal-nav-item active" data-tab="tab-dashboard">📊 Dashboard</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-automations">⚡ Automations</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-ai-builder">🤖 AI Builder</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-templates">📦 Templates</button>
+          </nav>
+          <div class="sidebar-group-label" style="font-size:0.75rem; font-weight:700; color:var(--color-slate-muted); margin-top:16px; margin-bottom:8px;">OPERATIONS</div>
+          <nav class="portal-nav-list">
+            <button type="button" class="portal-nav-item" data-tab="tab-connections">🔗 Connections</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-executions">📜 Executions</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-analytics">📈 Analytics</button>
+          </nav>
+          <div class="sidebar-group-label" style="font-size:0.75rem; font-weight:700; color:var(--color-slate-muted); margin-top:16px; margin-bottom:8px;">ADMINISTRATION</div>
+          <nav class="portal-nav-list">
+            <button type="button" class="portal-nav-item" data-tab="tab-team">👥 Team &amp; Audit</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-billing">💳 Billing</button>
+            <button type="button" class="portal-nav-item" data-tab="tab-settings">⚙️ Settings</button>
+          </nav>
+        </aside>
+
+        <div class="portal-main-area">
+          <div class="flex-between margin-bottom-md" style="background:white; border:1px solid var(--color-border); border-radius:var(--radius-md); padding:12px 20px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <select id="portalWorkspaceSelect" style="padding:6px 12px; cursor:pointer; border-radius:8px; border:1px solid var(--color-border);">
+                <option value="ws_default">Personal Workspace</option>
+                <option value="ws_new">+ Create New Workspace</option>
+              </select>
+              <button type="button" class="btn btn-sm btn-outline" id="btnOpenCmdPaletteHint">🔍 Search / Cmd + K</button>
+            </div>
+            
+            <div style="display:flex; align-items:center; gap:12px;">
+              <button type="button" class="btn btn-sm btn-primary" id="btnToggleCopilotDrawer">🤖 AI Copilot</button>
+              <span id="userRoleBadge" class="tag-primary">Owner</span>
+              <span id="activeUserEmailDisplay" class="text-sub-sm">user@company.com</span>
+              <button type="button" class="btn btn-sm btn-ghost" id="btnSignOut" title="Sign Out">Sign Out</button>
+            </div>
+          </div>
+
+          <div class="portal-pane active" id="tab-dashboard">
+            <div id="dashboardOnboardingContainer"></div>
+            <div class="dashboard-stats-grid" id="dashboardKpiContainer"></div>
+            <div class="margin-bottom-md" id="dashboardHealthScoreContainer"></div>
+            <div class="margin-bottom-md" id="dashboardApprovalsContainer"></div>
+            <div class="margin-bottom-md" id="dashboardCostRoiContainer"></div>
+
+            <div class="solution-card margin-bottom-md">
+              <div class="flex-between margin-bottom-sm">
+                <h3 style="font-size:1.1rem; font-weight:700;">Recent Automations</h3>
+                <button type="button" class="btn btn-sm btn-primary btnOpenCreateModalTrigger">+ Create Automation</button>
+              </div>
+              <div id="recentAutomationsContainer"></div>
+            </div>
+
+            <div class="solution-card margin-bottom-md">
+              <div class="flex-between margin-bottom-sm">
+                <h3 style="font-size:1.1rem; font-weight:700;">Recent Operational Activity</h3>
+                <span class="tag-primary">Live Activity Log</span>
+              </div>
+              <div id="dashboardActivityFeedContainer"></div>
+            </div>
+          </div>
+
+          <div class="portal-pane" id="tab-automations"><div class="automations-grid" id="automationsListGrid"></div></div>
+          <div class="portal-pane" id="tab-ai-builder"></div>
+          <div class="portal-pane" id="tab-templates"><div id="portalTemplatesGrid"></div></div>
+          <div class="portal-pane" id="tab-connections"><div class="connections-grid" id="connectionsGridContainer"></div></div>
+          <div class="portal-pane" id="tab-executions"></div>
+          <div class="portal-pane" id="tab-analytics"></div>
+          <div class="portal-pane" id="tab-team">
+            <div id="tab-team-content"></div>
+            <div class="solution-card margin-top-md">
+              <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:14px;">Audit Trail Log</h3>
+              <div id="auditLogsContainer"></div>
+            </div>
+          </div>
+          <div class="portal-pane" id="tab-billing"></div>
+          <div class="portal-pane" id="tab-settings"></div>
+
+          <div class="portal-pane" id="tab-automation-detail">
+            <div id="automationDetailHeaderContainer"></div>
+            <div id="tab-automation-detail-content"></div>
+          </div>
+          <div class="portal-pane" id="tab-execution-detail">
+            <div id="executionDetailHeaderContainer"></div>
+            <div id="tab-execution-detail-content"></div>
+          </div>
+          <div class="portal-pane" id="tab-connection-detail">
+            <div id="connectionDetailHeaderContainer"></div>
+            <div id="tab-connection-detail-content"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- STICKY MOBILE BOTTOM CTA BAR -->
+  <div class="sticky-cta" id="stickyMobileCta">
+    <a href="#contato" class="btn btn-primary btn-pulse btn-shimmer">CRIAR MEU SITE →</a>
+  </div>
+
+  <!-- BACK TO TOP BUTTON (DESKTOP) -->
+  <button type="button" class="back-to-top" id="btnBackToTop" aria-label="Voltar ao topo">↑</button>
+
+  <footer class="public-footer">
+    <div class="footer-container" style="grid-template-columns:1fr;">
+      <div style="text-align:center;">
+        <a href="#" class="brand-logo" style="justify-content:center;">AutoArchitect</a>
+        <p class="footer-tagline" style="margin:12px auto 0;">Sites profissionais em 30 segundos para negócios locais.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 AutoArchitect. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <div id="authModalContainer"></div>
+  <div id="simulatorModalContainer"></div>
+  <div id="versionCompareModalContainer"></div>
+  <div id="aiCopilotDrawerContainer"></div>
+
+  <div class="modal-backdrop" id="commandPaletteModal" style="display:none;">
+    <div class="modal-card" style="max-width:600px;">
+      <div class="modal-header">
+        <h3 style="font-family:var(--font-heading); font-size:1.2rem;">Command Palette (Ctrl + K)</h3>
+        <button type="button" class="btn-icon-close" id="btnCloseCmdPalette">&times;</button>
+      </div>
+      <input type="text" id="cmdPaletteInput" placeholder="Type a command or jump to page..." style="width:100%; padding:12px; margin-bottom:16px; border-radius:8px; border:1px solid var(--color-border);">
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button type="button" class="btn btn-outline cmd-item-btn" data-target-tab="tab-ai-builder" style="justify-content:flex-start;">🤖 Create Automation with AI</button>
+        <button type="button" class="btn btn-outline cmd-item-btn" data-target-tab="tab-automations" style="justify-content:flex-start;">⚡ View All Automations</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-popup" id="toastNotification"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
