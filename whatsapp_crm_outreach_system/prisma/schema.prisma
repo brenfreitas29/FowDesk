@@ -1,0 +1,112 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Lead {
+  id                    String      @id @default(uuid())
+  name                  String
+  clinicName            String
+  specialty             String
+  neighborhood          String?
+  phone                 String
+  whatsapp              String
+  countryCode           String      @default("AR")
+  phoneValid            Boolean     @default(true)
+  whatsappAvailable     Boolean     @default(true)
+  email                 String?
+  instagram             String?
+  website               String?
+  priority              String      @default("MEDIUM") // LOW, MEDIUM, HIGH, URGENT
+  status                String      @default("REVIEW_REQUIRED") // NEW, REVIEW_REQUIRED, READY, APPROVED, CONTACTED, REPLIED, INTERESTED, MEETING, PROPOSAL_SENT, CLOSED_WON, CLOSED_LOST, DO_NOT_CONTACT
+  consentStatus         String      @default("UNKNOWN") // UNKNOWN, OPTED_IN, OPTED_OUT, NOT_REQUIRED_FOR_CURRENT_FLOW
+  outreachEligible      Boolean     @default(false)
+  optOut                Boolean     @default(false)
+  doNotContact          Boolean     @default(false)
+  requiresHumanResponse Boolean     @default(false)
+  maxFollowUpsAllowed   Int         @default(1)
+  followUpCount         Int         @default(0)
+  approvedAt            DateTime?
+  approvedBy            String?
+  eligibilityCheckedAt  DateTime?
+  eligibilityReason     String?
+  firstContactAt        DateTime?
+  lastContactAt         DateTime?
+  nextFollowUpAt        DateTime?
+  lastReplyAt           DateTime?
+  optOutAt              DateTime?
+  doNotContactAt        DateTime?
+  notes                 String?
+  campaignId            String?
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+
+  messages              Message[]
+  auditLogs             AuditLog[]
+  campaign              Campaign?   @relation(fields: [campaignId], references: [id])
+}
+
+model Message {
+  id            String    @id @default(uuid())
+  leadId        String
+  lead          Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  metaMessageId String?   @unique
+  direction     String    // OUTBOUND, INBOUND
+  type          String    @default("TEXT") // TEXT, TEMPLATE
+  templateName  String?
+  content       String
+  status        String    // QUEUED, DRY_RUN, SENT, DELIVERED, READ, FAILED, CANCELLED
+  errorCategory String?
+  actor         String?   @default("SYSTEM")
+  sentAt        DateTime?
+  deliveredAt   DateTime?
+  readAt        DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Campaign {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  status      String   @default("DRAFT") // DRAFT, ACTIVE, PAUSED, COMPLETED
+  leads       Lead[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Template {
+  id             String    @id @default(uuid())
+  templateName   String    @unique
+  language       String    @default("es")
+  category       String    @default("UTILITY") // MARKETING, UTILITY, AUTHENTICATION
+  localStatus    String    @default("DRAFT") // DRAFT, READY
+  metaStatus     String    @default("PENDING") // PENDING, APPROVED, REJECTED, PAUSED
+  metaTemplateId String?
+  bodyText       String
+  variables      String?
+  lastSyncedAt   DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  leadId    String?
+  lead      Lead?    @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  action    String
+  actor     String   @default("SYSTEM")
+  details   String
+  createdAt DateTime @default(now())
+}
+
+model ProcessedEvent {
+  id          String   @id @default(uuid())
+  eventId     String   @unique
+  eventType   String
+  processedAt DateTime @default(now())
+}

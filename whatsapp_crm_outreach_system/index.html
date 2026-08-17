@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoArchitect - Build Smarter Business Workflows</title>
+  <meta name="description" content="Design, simulate, and implement intelligent business automations from a single enterprise platform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-corporate-theme">
+
+  <!-- Mobile Drawer Menu Backdrop -->
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+
+  <!-- Mobile Drawer Menu Panel -->
+  <aside class="mobile-drawer-panel" id="mobileDrawerPanel">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-icon-svg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+        </div>
+        <span class="logo-title">AutoArchitect</span>
+      </div>
+      <button class="btn-icon-close" id="btnCloseMobileDrawer" aria-label="Close menu">&times;</button>
+    </div>
+
+    <nav class="drawer-nav-links">
+      <a href="#solutions" class="drawer-nav-link nav-public-link" data-i18n="nav_solutions">Solutions</a>
+      <a href="#industries" class="drawer-nav-link nav-public-link" data-i18n="nav_industries">Industries</a>
+      <a href="#how-it-works" class="drawer-nav-link nav-public-link" data-i18n="nav_how_it_works">How It Works</a>
+      <a href="#integrations" class="drawer-nav-link nav-public-link" data-i18n="nav_integrations">Integrations</a>
+      <a href="#pricing" class="drawer-nav-link nav-public-link" data-i18n="nav_pricing">Pricing</a>
+      <a href="#about" class="drawer-nav-link nav-public-link" data-i18n="nav_about">About Us</a>
+      <a href="#contact" class="drawer-nav-link nav-public-link" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="drawer-actions">
+      <div class="lang-switch-group">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="btn btn-outline btn-block" id="btnDrawerLogin" data-i18n="btn_login">Sign In</button>
+      <button class="btn btn-primary btn-block" id="btnDrawerSignUp" data-i18n="btn_signup">Get Started</button>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <!-- Left Logo -->
+      <div class="brand-logo" id="logoHomeLink" style="cursor: pointer;">
+        <div class="logo-icon-svg">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+        </div>
+        <span class="logo-title">AutoArchitect</span>
+      </div>
+
+      <!-- Public Site Desktop Nav -->
+      <nav class="desktop-nav" id="desktopPublicNav">
+        <a href="#solutions" class="nav-link" data-i18n="nav_solutions">Solutions</a>
+        <a href="#industries" class="nav-link" data-i18n="nav_industries">Industries</a>
+        <a href="#how-it-works" class="nav-link" data-i18n="nav_how_it_works">How It Works</a>
+        <a href="#integrations" class="nav-link" data-i18n="nav_integrations">Integrations</a>
+        <a href="#pricing" class="nav-link" data-i18n="nav_pricing">Pricing</a>
+        <a href="#about" class="nav-link" data-i18n="nav_about">About Us</a>
+        <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="header-right-actions">
+        <!-- Language Switcher EN | ES -->
+        <div class="lang-switcher-pill">
+          <button class="lang-toggle-btn active" data-lang="en">EN</button>
+          <span class="lang-sep">|</span>
+          <button class="lang-toggle-btn" data-lang="es">ES</button>
+        </div>
+
+        <!-- Mode Toggle & Auth Buttons -->
+        <div class="auth-buttons-group" id="authButtonsGroup">
+          <button class="btn btn-ghost" id="btnHeaderLogin" data-i18n="btn_login">Sign In</button>
+          <button class="btn btn-primary" id="btnHeaderLaunchApp" data-i18n="btn_launch_app">Launch Platform</button>
+        </div>
+
+        <!-- App View Portal Back Link -->
+        <button class="btn btn-outline" id="btnBackToPublicSite" style="display: none;" data-i18n="btn_back_public">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span data-i18n="btn_public_website">Public Website</span>
+        </button>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button class="btn-hamburger-menu" id="btnOpenMobileDrawer" aria-label="Open navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       1. PUBLIC COMMERCIAL WEBSITE VIEW (#publicSiteView)
+       ========================================================================= -->
+  <main id="publicSiteView" class="view-container">
+
+    <!-- Hero Section -->
+    <section class="public-hero-section">
+      <div class="hero-container">
+        <div class="hero-badge-tag" data-i18n="hero_badge">Workflow Automation Engine</div>
+        <h1 class="hero-main-title" data-i18n="hero_title">Build smarter workflows for your business</h1>
+        <p class="hero-description-text" data-i18n="hero_subtitle">Design, simulate, and implement business automations from a single enterprise platform.</p>
+        
+        <div class="hero-cta-group">
+          <button class="btn btn-primary btn-lg" id="btnHeroGetStarted" data-i18n="btn_get_started">Get Started Free</button>
+          <button class="btn btn-outline btn-lg" id="btnHeroExploreApp" data-i18n="btn_explore_demo">Explore Live Platform</button>
+        </div>
+
+        <div class="hero-trust-notes">
+          <span data-i18n="trust_note_security">✓ Security-oriented architecture</span>
+          <span data-i18n="trust_note_privacy">✓ Data protection best practices</span>
+          <span data-i18n="trust_note_custom">✓ Customized per project requirements</span>
+        </div>
+      </div>
+
+      <!-- Professional Studio Workflow Preview Window -->
+      <div class="hero-diagram-preview">
+        <div class="diagram-window-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="window-title" data-i18n="window_title">AutoArchitect Studio - Enterprise Workflow Editor</span>
+        </div>
+        <div class="diagram-canvas-preview">
+          <div class="preview-node trigger-node">
+            <div class="preview-node-badge">1</div>
+            <div>
+              <div class="preview-node-title">Webhook Trigger</div>
+              <div class="preview-node-sub">Inbound Event Stream</div>
+            </div>
+          </div>
+          <div class="preview-connector">→</div>
+          <div class="preview-node process-node">
+            <div class="preview-node-badge">2</div>
+            <div>
+              <div class="preview-node-title">Logic & Data Parsing</div>
+              <div class="preview-node-sub">Validation Engine</div>
+            </div>
+          </div>
+          <div class="preview-connector">→</div>
+          <div class="preview-node action-node">
+            <div class="preview-node-badge">3</div>
+            <div>
+              <div class="preview-node-title">ERP & API Sync</div>
+              <div class="preview-node-sub">Automated Output</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="public-section bg-alt">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="sec_solutions_title">Designed for modern operational teams</h2>
+          <p class="section-subtitle" data-i18n="sec_solutions_sub">Eliminate repetitive tasks and connect your entire software ecosystem seamlessly.</p>
+        </div>
+
+        <div class="solutions-grid">
+          <div class="solution-card">
+            <div class="card-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              </svg>
+            </div>
+            <h3 data-i18n="sol_1_title">Visual Workflow Designer</h3>
+            <p data-i18n="sol_1_desc">Build complex multi-step processes with interactive node orchestration and clean JSON export support.</p>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <h3 data-i18n="sol_2_title">Real-Time Event Simulator</h3>
+            <p data-i18n="sol_2_desc">Test execution flows, payload transforms, and API calls with live execution logs before going live.</p>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 data-i18n="sol_3_title">ROI & Impact Analysis</h3>
+            <p data-i18n="sol_3_desc">Quantify labor hour savings, operational efficiency gains, and financial returns per department.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Industries Showcase Section -->
+    <section id="industries" class="public-section">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="sec_industries_title">Pre-built automation models for key sectors</h2>
+          <p class="section-subtitle" data-i18n="sec_industries_sub">Explore industry-specific workflows engineered for scale.</p>
+        </div>
+
+        <div class="public-industries-grid" id="publicIndustriesGrid">
+          <!-- Dynamically filled by app.js with SVG icons -->
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="public-section bg-alt">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="hiw_title">How AutoArchitect Works</h2>
+          <p class="section-subtitle" data-i18n="hiw_sub">Three simple steps to automate your business operations.</p>
+        </div>
+
+        <div class="hiw-steps-grid">
+          <div class="hiw-step-card">
+            <div class="hiw-num">01</div>
+            <h3 data-i18n="hiw_step_1_title">Model & Connect</h3>
+            <p data-i18n="hiw_step_1_desc">Select your industry blueprint or model custom nodes for your ERP, CRM, and APIs.</p>
+          </div>
+          <div class="hiw-step-card">
+            <div class="hiw-num">02</div>
+            <h3 data-i18n="hiw_step_2_title">Simulate & Test</h3>
+            <p data-i18n="hiw_step_2_desc">Run real-time payload simulations to verify execution logic and error handling.</p>
+          </div>
+          <div class="hiw-step-card">
+            <div class="hiw-num">03</div>
+            <h3 data-i18n="hiw_step_3_title">Deploy & Monitor</h3>
+            <p data-i18n="hiw_step_3_desc">Export production-ready n8n/Make blueprints and monitor performance from your dashboard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section id="integrations" class="public-section">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="int_title">Integrate with your favorite tools</h2>
+          <p class="section-subtitle" data-i18n="int_sub">Connect seamless webhooks and APIs across your software stack.</p>
+        </div>
+
+        <div class="integrations-grid">
+          <div class="int-badge">Shopify</div>
+          <div class="int-badge">SAP S/4HANA</div>
+          <div class="int-badge">HubSpot CRM</div>
+          <div class="int-badge">WhatsApp API</div>
+          <div class="int-badge">Slack</div>
+          <div class="int-badge">Stripe</div>
+          <div class="int-badge">PostgreSQL</div>
+          <div class="int-badge">Gemini AI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="public-section bg-alt">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="sec_pricing_title">Transparent plans for teams of any size</h2>
+          <p class="section-subtitle" data-i18n="sec_pricing_sub">Choose the right tier for your operational volume. Upgrade or cancel anytime.</p>
+          
+          <!-- Billing Cycle Toggle -->
+          <div class="billing-cycle-toggle">
+            <span id="labelMonthly" class="active" data-i18n="plan_monthly">Monthly Billing</span>
+            <label class="switch">
+              <input type="checkbox" id="billingCycleSwitch">
+              <span class="slider round"></span>
+            </label>
+            <span id="labelAnnual" data-i18n="plan_annual">Annual Billing <small class="discount-pill" data-i18n="discount_20">Save 20%</small></span>
+          </div>
+        </div>
+
+        <div class="public-pricing-grid">
+          <!-- Free Plan -->
+          <div class="pricing-plan-card">
+            <div class="plan-header">
+              <h3 data-i18n="plan_free_title">Free</h3>
+              <p class="plan-desc-sm" data-i18n="plan_free_desc">For individuals exploring workflow modeling.</p>
+            </div>
+            <div class="plan-price-amount">
+              <span class="price-val">$0</span>
+              <span class="price-period" data-i18n="period_forever">/ forever</span>
+            </div>
+            <ul class="plan-bullets">
+              <li data-i18n="bullet_free_1">✓ 1 Active Workflow</li>
+              <li data-i18n="bullet_free_2">✓ 100 Simulations / month</li>
+              <li data-i18n="bullet_free_3">✓ Standard Community Support</li>
+            </ul>
+            <button class="btn btn-outline btn-block btnSelectPricingPlan" data-plan="free" data-i18n="btn_start_free">Get Started Free</button>
+          </div>
+
+          <!-- Starter Plan -->
+          <div class="pricing-plan-card">
+            <div class="plan-header">
+              <h3 data-i18n="plan_starter_title">Starter</h3>
+              <p class="plan-desc-sm" data-i18n="plan_starter_desc">For growing small businesses.</p>
+            </div>
+            <div class="plan-price-amount">
+              <span class="price-val priceValStarter">$99</span>
+              <span class="price-period" data-i18n="period_month">/ month</span>
+            </div>
+            <ul class="plan-bullets">
+              <li data-i18n="bullet_starter_1">✓ 5 Active Workflows</li>
+              <li data-i18n="bullet_starter_2">✓ 5,000 Executions / month</li>
+              <li data-i18n="bullet_starter_3">✓ Email Support (24h SLA)</li>
+            </ul>
+            <button class="btn btn-outline btn-block btnSelectPricingPlan" data-plan="starter" data-i18n="btn_choose_starter">Select Starter</button>
+          </div>
+
+          <!-- Professional Plan -->
+          <div class="pricing-plan-card featured">
+            <div class="featured-ribbon" data-i18n="ribbon_popular">Most Popular</div>
+            <div class="plan-header">
+              <h3 data-i18n="plan_pro_title">Professional</h3>
+              <p class="plan-desc-sm" data-i18n="plan_pro_desc">For operational teams requiring automated orchestration.</p>
+            </div>
+            <div class="plan-price-amount">
+              <span class="price-val priceValPro">$299</span>
+              <span class="price-period" data-i18n="period_month">/ month</span>
+            </div>
+            <ul class="plan-bullets">
+              <li data-i18n="bullet_pro_1">✓ 25 Active Workflows</li>
+              <li data-i18n="bullet_pro_2">✓ 50,000 Executions / month</li>
+              <li data-i18n="bullet_pro_3">✓ Priority Support & Real-time Logs</li>
+            </ul>
+            <button class="btn btn-primary btn-block btnSelectPricingPlan" data-plan="pro" data-i18n="btn_choose_pro">Select Professional</button>
+          </div>
+
+          <!-- Business Plan -->
+          <div class="pricing-plan-card">
+            <div class="plan-header">
+              <h3 data-i18n="plan_business_title">Business</h3>
+              <p class="plan-desc-sm" data-i18n="plan_business_desc">For high-volume operations and complex integrations.</p>
+            </div>
+            <div class="plan-price-amount">
+              <span class="price-val priceValBusiness">$599</span>
+              <span class="price-period" data-i18n="period_month">/ month</span>
+            </div>
+            <ul class="plan-bullets">
+              <li data-i18n="bullet_biz_1">✓ Unlimited Workflows</li>
+              <li data-i18n="bullet_biz_2">✓ Dedicated API Gateways</li>
+              <li data-i18n="bullet_biz_3">✓ SLA & Dedicated Account Lead</li>
+            </ul>
+            <button class="btn btn-outline btn-block btnSelectPricingPlan" data-plan="business" data-i18n="btn_choose_biz">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="public-section">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="about_title">About AutoArchitect</h2>
+          <p class="section-subtitle" data-i18n="about_sub">We empower organizations to design, simulate, and operate efficient automated workflows.</p>
+        </div>
+        <div class="about-content-box">
+          <p data-i18n="about_p1">AutoArchitect was founded to solve operational friction in modern enterprises. By providing intuitive workflow modeling, real-time simulation, and production-ready blueprints, we help teams automate repetitive tasks securely.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="public-section bg-alt">
+      <div class="section-container">
+        <div class="section-header-center">
+          <h2 class="section-title" data-i18n="contact_title">Get in Touch</h2>
+          <p class="section-subtitle" data-i18n="contact_sub">Have questions or need a custom enterprise solution? Our team is ready to help.</p>
+        </div>
+
+        <form id="publicContactForm" class="contact-form-box">
+          <div class="form-group">
+            <label for="contactName" data-i18n="lbl_contact_name">Your Name</label>
+            <input type="text" id="contactName" class="form-input" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail" data-i18n="lbl_contact_email">Work Email</label>
+            <input type="email" id="contactEmail" class="form-input" placeholder="jane@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage" data-i18n="lbl_contact_msg">Message</label>
+            <textarea id="contactMessage" class="form-input" rows="4" placeholder="How can we help your team?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" data-i18n="btn_send_msg">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="public-footer">
+      <div class="footer-container">
+        <div class="footer-col-brand">
+          <div class="brand-logo">
+            <div class="logo-icon-svg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+              </svg>
+            </div>
+            <span class="logo-title">AutoArchitect</span>
+          </div>
+          <p class="footer-tagline" data-i18n="footer_tagline">Build, simulate and execute smarter business processes from one platform.</p>
+        </div>
+        <div class="footer-col-links">
+          <span class="footer-head" data-i18n="footer_platform">Platform</span>
+          <a href="#solutions" data-i18n="nav_solutions">Solutions</a>
+          <a href="#industries" data-i18n="nav_industries">Industries</a>
+          <a href="#how-it-works" data-i18n="nav_how_it_works">How It Works</a>
+          <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+        </div>
+        <div class="footer-col-links">
+          <span class="footer-head" data-i18n="footer_company">Company</span>
+          <a href="#about" data-i18n="nav_about">About Us</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
+          <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer_terms">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 AutoArchitect. All rights reserved.</span>
+      </div>
+    </footer>
+  </main>
+
+
+  <!-- =========================================================================
+       2. AUTHENTICATED CUSTOMER PORTAL VIEW (#appPortalView)
+       ========================================================================= -->
+  <div id="appPortalView" class="view-container" style="display: none;">
+    <div class="portal-layout container">
+      
+      <!-- Collapsible Sidebar Nav -->
+      <aside class="portal-sidebar" id="portalSidebar">
+        <div class="sidebar-top-header">
+          <h3 data-i18n="portal_sectors_title">Sectors & Models</h3>
+          <span class="count-badge" id="sectorsCountBadge">10</span>
+        </div>
+
+        <div class="search-box-wrapper">
+          <input type="text" id="sectorSearchInput" class="form-input" placeholder="Search sectors or APIs..." autocomplete="off">
+        </div>
+
+        <nav class="sector-menu-list" id="sectorMenuList">
+          <!-- Filled dynamically by JS -->
+        </nav>
+      </aside>
+
+      <!-- Main Portal Workspace Area -->
+      <section class="portal-main-content">
+
+        <!-- Active Sector Header -->
+        <div class="sector-header-card">
+          <div class="sector-title-row">
+            <div class="sector-icon-svg-box" id="sectorIconSvgBox">
+              <!-- SVG Icon -->
+            </div>
+            <div>
+              <span class="sector-category-label" id="sectorCategoryLabel">Sector #1</span>
+              <h2 class="sector-title-text" id="sectorTitleDisplay">E-commerce & Retail</h2>
+            </div>
+          </div>
+
+          <!-- Dual Prompt Mode Switcher -->
+          <div class="prompt-mode-switcher">
+            <button class="prompt-mode-btn active" id="btnTogglePrompt1" data-i18n="prompt_tab_1">Prompt 1: Operational Flow</button>
+            <button class="prompt-mode-btn" id="btnTogglePrompt2" data-i18n="prompt_tab_2">Prompt 2: Benefits & CTA</button>
+          </div>
+
+          <!-- Prompt Output Container -->
+          <div class="prompt-content-box">
+            <div class="prompt-box-header">
+              <span class="prompt-badge-tag" id="promptTagLabel">PROMPT 1 (OPERATIONAL)</span>
+              <button class="btn btn-sm btn-outline" id="btnCopyPrompt" data-i18n="btn_copy_prompt">Copy Prompt</button>
+            </div>
+            <p class="prompt-display-text" id="sectorPromptText">"Describe our automation..."</p>
+            <div class="cta-box-highlight" id="ctaBadge" style="display: none;">
+              <strong data-i18n="cta_label">Call to Action:</strong> <span id="ctaTextDisplay"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portal Tabs Navigation Bar -->
+        <div class="portal-tabs-bar">
+          <button class="portal-tab-btn active" data-tab="tab-blueprint" data-i18n="tab_workflows">Workflows</button>
+          <button class="portal-tab-btn" data-tab="tab-simulator" data-i18n="tab_simulator">Simulations</button>
+          <button class="portal-tab-btn" data-tab="tab-generator" data-i18n="tab_generator">Prompt Generator</button>
+          <button class="portal-tab-btn" data-tab="tab-roi" data-i18n="tab_roi">ROI Calculator</button>
+          <button class="portal-tab-btn" data-tab="tab-proposal" data-i18n="tab_proposals">Commercial Proposal</button>
+          <button class="portal-tab-btn" data-tab="tab-billing" data-i18n="tab_billing">Billing & Account</button>
+          <button class="portal-tab-btn" data-tab="tab-admin" id="btnAdminTab" data-i18n="tab_admin" style="background: rgba(37, 99, 235, 0.08); font-weight: 700; color: var(--color-primary);">👑 Owner Console</button>
+        </div>
+
+        <!-- Portal Tab Contents -->
+        <div class="portal-tab-contents">
+
+          <!-- 1. Workflows Tab -->
+          <div class="portal-pane active" id="tab-blueprint">
+            <div class="grid-2col">
+              <div class="card">
+                <div class="card-header">
+                  <h3 data-i18n="wf_title">Workflow Canvas (Execution Nodes)</h3>
+                </div>
+                <p class="card-subtitle" data-i18n="wf_sub">Click any node to inspect data payloads and rules.</p>
+                <div class="workflow-canvas-container" id="workflowCanvas">
+                  <!-- Nodes rendered by JS -->
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h3 data-i18n="tech_title">Engineering Specifications</h3>
+                </div>
+
+                <div class="spec-group">
+                  <h4 data-i18n="tech_stack_label">Integrations & Tech Stack</h4>
+                  <div class="tech-tags-wrapper" id="techStackTags"></div>
+                </div>
+
+                <div class="spec-group">
+                  <h4 data-i18n="tech_goals_label">Key Operational Goals</h4>
+                  <ul class="bullet-list-clean" id="sectorBenefitsList"></ul>
+                </div>
+
+                <div class="spec-group">
+                  <h4 data-i18n="expanded_prompt_label">Expanded Prompt</h4>
+                  <div class="code-box-wrapper">
+                    <pre class="code-block" id="expandedPromptBlock"></pre>
+                    <button class="btn btn-sm btn-outline" id="btnCopyExpandedPrompt" data-i18n="btn_copy_expanded">Copy Expanded Prompt</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Simulations Tab -->
+          <div class="portal-pane" id="tab-simulator">
+            <div class="card">
+              <div class="card-header flex-between">
+                <h3 data-i18n="sim_title">Real-Time Event Simulator</h3>
+                <div class="flex-gap">
+                  <button class="btn btn-primary" id="btnStartSimulation" data-i18n="btn_trigger_event">Run Test Event</button>
+                  <button class="btn btn-outline" id="btnClearLogs" data-i18n="btn_clear_console">Clear Console</button>
+                </div>
+              </div>
+
+              <div class="sim-metrics-grid">
+                <div class="metric-box">
+                  <span class="m-label" data-i18n="sim_status">Status</span>
+                  <span class="m-val status-idle" id="simStatus">Idle</span>
+                </div>
+                <div class="metric-box">
+                  <span class="m-label" data-i18n="sim_time">Latency</span>
+                  <span class="m-val" id="simTime">0 ms</span>
+                </div>
+                <div class="metric-box">
+                  <span class="m-label" data-i18n="sim_nodes">Processed Nodes</span>
+                  <span class="m-val" id="simNodesCount">0 / 4</span>
+                </div>
+              </div>
+
+              <div class="sim-progress-track">
+                <div class="sim-progress-fill" id="simProgressBar"></div>
+              </div>
+
+              <div class="terminal-box">
+                <div class="terminal-top">
+                  <span data-i18n="terminal_title">Execution Logs - Automation Engine</span>
+                </div>
+                <div class="terminal-logs" id="terminalLogs">
+                  <div class="log-line info">[SYSTEM] Engine ready. Click "Run Test Event" to initiate simulation.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Prompt Generator Tab -->
+          <div class="portal-pane" id="tab-generator">
+            <div class="card">
+              <div class="card-header">
+                <h3 data-i18n="gen_title">Custom Automation Prompt & Blueprint Generator</h3>
+              </div>
+              <p class="card-subtitle" data-i18n="gen_sub">Configure your company scale and tech stack to output customized n8n/Make blueprints.</p>
+
+              <form id="generatorForm" class="form-grid-2col">
+                <div class="form-group">
+                  <label for="companyScale" data-i18n="gen_scale_label">Company Scale</label>
+                  <select id="companyScale" class="form-select">
+                    <option value="startup" data-i18n="opt_startup">Startup / Small (Up to 500 ops/mo)</option>
+                    <option value="medium" selected data-i18n="opt_medium">Mid-sized (500 - 10,000 ops/mo)</option>
+                    <option value="enterprise" data-i18n="opt_enterprise">Enterprise (10,000+ ops/mo)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="primaryStack" data-i18n="gen_stack_label">Primary Platform / ERP</label>
+                  <input type="text" id="primaryStack" class="form-input" placeholder="e.g. Shopify, SAP, Hubspot">
+                </div>
+
+                <div class="form-group">
+                  <label for="notificationChannel" data-i18n="gen_channel_label">Notification Channel</label>
+                  <select id="notificationChannel" class="form-select">
+                    <option value="WhatsApp Business API" selected>WhatsApp Business API</option>
+                    <option value="Slack / MS Teams">Slack / MS Teams</option>
+                    <option value="Transactional Email">Transactional Email</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="aiEnhancement" data-i18n="gen_ai_label">AI Model Engine</label>
+                  <select id="aiEnhancement" class="form-select">
+                    <option value="Standard Rules" data-i18n="opt_rules">Standard Rules (No AI)</option>
+                    <option value="Fast AI Parser" selected data-i18n="opt_fast_ai">Fast AI Parser (Gemini Flash)</option>
+                    <option value="Advanced AI Reasoning" data-i18n="opt_adv_ai">Advanced AI Reasoning (Gemini Pro)</option>
+                  </select>
+                </div>
+              </form>
+
+              <div class="generator-result-area">
+                <div class="flex-between margin-bottom-sm">
+                  <h4 data-i18n="gen_output_title">Generated Prompt</h4>
+                  <div class="flex-gap">
+                    <button class="btn btn-sm btn-outline" id="btnCopyGeneratedPrompt" data-i18n="btn_copy_prompt">Copy Custom Prompt</button>
+                    <button class="btn btn-sm btn-primary" id="btnDownloadBlueprintJson" data-i18n="btn_download_blueprint">Download JSON Blueprint</button>
+                  </div>
+                </div>
+                <pre class="code-block" id="generatedPromptResult"></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. ROI Calculator Tab -->
+          <div class="portal-pane" id="tab-roi">
+            <div class="card">
+              <div class="card-header">
+                <h3 data-i18n="roi_title">ROI & Impact Calculator</h3>
+              </div>
+              
+              <div class="grid-2col">
+                <form id="roiForm" class="form-grid-stack">
+                  <div class="form-group">
+                    <label for="monthlyVolume" data-i18n="roi_vol_label">Monthly Operation Volume</label>
+                    <input type="number" id="monthlyVolume" class="form-input" value="1200" min="10">
+                  </div>
+                  <div class="form-group">
+                    <label for="manualTimeMin" data-i18n="roi_time_label">Manual Time per Task (minutes)</label>
+                    <input type="number" id="manualTimeMin" class="form-input" value="15" min="1">
+                  </div>
+                  <div class="form-group">
+                    <label for="hourlyCostBr" data-i18n="roi_cost_label">Average Hourly Labor Cost ($)</label>
+                    <input type="number" id="hourlyCostBr" class="form-input" value="35" min="5">
+                  </div>
+                </form>
+
+                <div class="roi-summary-box">
+                  <h4 data-i18n="roi_summary_title">Estimated Monthly Savings</h4>
+                  <div class="roi-metric-highlight">
+                    <span class="m-sub" data-i18n="roi_direct_savings">Financial Savings</span>
+                    <span class="m-big" id="roiFinancialSavings">$9,450.00</span>
+                  </div>
+                  <div class="roi-metrics-pair">
+                    <div>
+                      <span class="m-sub" data-i18n="roi_hours_saved">Hours Saved</span>
+                      <span class="m-mid" id="roiHoursSaved">300 hrs</span>
+                    </div>
+                    <div>
+                      <span class="m-sub" data-i18n="roi_speedup">Speed Multiplier</span>
+                      <span class="m-mid text-success" id="roiSpeedup">30x faster</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Commercial Proposal Tab -->
+          <div class="portal-pane" id="tab-proposal">
+            <div class="card">
+              <div class="card-header flex-between">
+                <h3 data-i18n="prop_title">Commercial Proposal Generator (11 Sections)</h3>
+                <div class="flex-gap">
+                  <button class="btn btn-outline" id="btnCopyProposalText" data-i18n="btn_copy_text">Copy Text</button>
+                  <button class="btn btn-primary" id="btnPrintProposalPdf" data-i18n="btn_print_pdf">Print / Save PDF</button>
+                </div>
+              </div>
+
+              <form id="proposalForm" class="form-grid-3col margin-bottom-md">
+                <div class="form-group">
+                  <label for="propClientName" data-i18n="prop_client_label">Client Company Name</label>
+                  <input type="text" id="propClientName" class="form-input" value="Acme Global Inc.">
+                </div>
+                <div class="form-group">
+                  <label for="propContactName" data-i18n="prop_contact_label">Decision Maker</label>
+                  <input type="text" id="propContactName" class="form-input" value="John Doe (VP Operations)">
+                </div>
+                <div class="form-group">
+                  <label for="propProviderName" data-i18n="prop_provider_label">Your Company Name</label>
+                  <input type="text" id="propProviderName" class="form-input" value="AutoArchitect Solutions">
+                </div>
+                <div class="form-group">
+                  <label for="propSetupPrice" data-i18n="prop_setup_label">Setup Fee ($)</label>
+                  <input type="number" id="propSetupPrice" class="form-input" value="4500">
+                </div>
+                <div class="form-group">
+                  <label for="propMonthlyPrice" data-i18n="prop_monthly_label">Monthly Fee ($)</label>
+                  <input type="number" id="propMonthlyPrice" class="form-input" value="550">
+                </div>
+                <div class="form-group">
+                  <label for="propDeadlineDays" data-i18n="prop_days_label">Delivery Timeline (Days)</label>
+                  <input type="number" id="propDeadlineDays" class="form-input" value="20">
+                </div>
+              </form>
+
+              <div class="proposal-document-wrapper">
+                <div class="proposal-document" id="proposalDocument">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Billing & Account Settings Tab -->
+          <div class="portal-pane" id="tab-billing">
+            <div class="card">
+              <div class="card-header flex-between">
+                <h3 data-i18n="bill_title">Subscription & Billing Management</h3>
+                <span class="text-sub-sm" id="adminStripeConfigNotice" style="color: var(--color-slate-muted); font-size: 0.78rem;" data-i18n="admin_stripe_notice">Payment integration pending configuration.</span>
+              </div>
+
+              <!-- Customer Plan Details Box -->
+              <div class="billing-status-box">
+                <div class="flex-between flex-wrap gap-md">
+                  <div>
+                    <div class="flex-gap">
+                      <span class="badge-status-active" data-i18n="bill_active_plan">Current Plan: Professional</span>
+                      <span class="tag-success">$299.00 / month</span>
+                    </div>
+                    <p class="text-sub margin-top-xs" data-i18n="bill_renews_on">Next Billing Date: September 1, 2026</p>
+                    <p class="text-sub-sm margin-top-xs" data-i18n="bill_payment_method">Payment Method: Visa ending in 4242</p>
+                  </div>
+                  <div class="flex-gap">
+                    <button class="btn btn-outline" id="btnChangePlan" data-i18n="btn_change_plan">Change Plan</button>
+                    <button class="btn btn-outline text-danger-btn" id="btnCancelSub" data-i18n="btn_cancel_sub">Cancel Subscription</button>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="margin-top-md" data-i18n="bill_history_title">Payment History & Invoices</h4>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="th_date">Date</th>
+                    <th data-i18n="th_description">Description</th>
+                    <th data-i18n="th_amount">Amount</th>
+                    <th data-i18n="th_status">Status</th>
+                    <th data-i18n="th_invoice">Invoice</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Aug 01, 2026</td>
+                    <td>Professional Plan - Monthly</td>
+                    <td>$299.00</td>
+                    <td><span class="tag-success" data-i18n="tag_paid">Paid</span></td>
+                    <td><a href="#" class="link-action" onclick="alert('Downloading invoice PDF...'); return false;" data-i18n="link_download_pdf">Download PDF</a></td>
+                  </tr>
+                  <tr>
+                    <td>Jul 01, 2026</td>
+                    <td>Professional Plan - Monthly</td>
+                    <td>$299.00</td>
+                    <td><span class="tag-success" data-i18n="tag_paid">Paid</span></td>
+                    <td><a href="#" class="link-action" onclick="alert('Downloading invoice PDF...'); return false;" data-i18n="link_download_pdf">Download PDF</a></td>
+                  </tr>
+          <!-- 7. Site Owner / Admin Console Tab -->
+          <div class="portal-pane" id="tab-admin">
+            <div class="card">
+              <div class="card-header flex-between">
+                <div>
+                  <h3 data-i18n="admin_panel_title">👑 Site Owner & Administration Console</h3>
+                  <p class="card-subtitle" style="margin-bottom:0;" data-i18n="admin_panel_sub">Full platform privileges, API key configuration, and subscription management.</p>
+                </div>
+                <span class="badge-status-active" style="background: rgba(37, 99, 235, 0.1); color: var(--color-primary);" data-i18n="role_owner_label">Role: Platform Owner</span>
+              </div>
+
+              <!-- Owner Profile Card -->
+              <div class="grid-2col margin-bottom-md">
+                <div class="card" style="background: var(--color-bg-alt); margin-bottom: 0;">
+                  <h4 data-i18n="owner_profile_title">Owner Account Profile</h4>
+                  <form id="ownerProfileForm" class="form-grid-stack margin-top-xs">
+                    <div class="form-group">
+                      <label for="ownerNameInput" data-i18n="lbl_owner_name">Owner Name</label>
+                      <input type="text" id="ownerNameInput" class="form-input" value="Brendon" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="ownerEmailInput" data-i18n="lbl_owner_email">Owner Email</label>
+                      <input type="email" id="ownerEmailInput" class="form-input" value="admin@autoarchitect.com" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="ownerPasswordInput" data-i18n="lbl_owner_pass">Admin Password</label>
+                      <input type="password" id="ownerPasswordInput" class="form-input" value="admin123" required>
+                    </div>
+                    <button type="submit" class="btn btn-outline btn-sm" id="btnSaveOwnerProfile" data-i18n="btn_save_profile">Update Owner Profile</button>
+                  </form>
+                </div>
+
+                <!-- Stripe API Keys Management Box -->
+                <div class="card" style="background: var(--color-bg-alt); margin-bottom: 0;">
+                  <h4 data-i18n="admin_stripe_config_title">Stripe Production API Keys</h4>
+                  <form id="adminStripeKeysForm" class="form-grid-stack margin-top-xs">
+                    <div class="form-group">
+                      <label for="adminStripePk">NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY</label>
+                      <input type="text" id="adminStripePk" class="form-input" placeholder="pk_live_51..." value="pk_test_sample_key_autoarchitect">
+                    </div>
+                    <div class="form-group">
+                      <label for="adminStripeSk">STRIPE_SECRET_KEY</label>
+                      <input type="password" id="adminStripeSk" class="form-input" placeholder="sk_live_51..." value="sk_test_sample_key_autoarchitect">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnSaveStripeKeys" data-i18n="btn_save_keys">Save Production Keys</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Platform Overview Metrics -->
+              <h4 class="margin-top-md" data-i18n="admin_metrics_title">Platform Overview Metrics</h4>
+              <div class="sim-metrics-grid margin-bottom-md">
+                <div class="metric-box">
+                  <span class="m-label" data-i18n="lbl_total_users">Registered Users</span>
+                  <span class="m-val">1,420</span>
+                </div>
+                <div class="metric-box">
+                  <span class="m-label" data-i18n="lbl_active_wf">Active Workflows</span>
+                  <span class="m-val">384</span>
+                </div>
+                <div class="metric-box">
+                  <span class="m-label" data-i18n="lbl_mrr">Monthly Recurring Revenue</span>
+                  <span class="m-val text-success">$14,850.00</span>
+                </div>
+              </div>
+
+              <!-- User Accounts Management Table -->
+              <h4 data-i18n="admin_users_title">Registered Platform Accounts</h4>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Subscription Plan</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Brendon</strong></td>
+                    <td>admin@autoarchitect.com</td>
+                    <td><span class="tag-success">Site Owner</span></td>
+                    <td>Business Unlimited</td>
+                    <td><span class="tag-success">Active</span></td>
+                    <td><button class="btn btn-sm btn-outline" onclick="alert('Owner privileges active.');">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td>Acme Corp Lead</td>
+                    <td>john@acmeglobal.com</td>
+                    <td>Customer</td>
+                    <td>Professional</td>
+                    <td><span class="tag-success">Active</span></td>
+                    <td><button class="btn btn-sm btn-outline" onclick="alert('Viewing customer account details...');">Inspect</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Sign In Modal -->
+  <div class="modal-backdrop" id="signInModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 data-i18n="modal_login_title">Sign In to AutoArchitect</h3>
+        <button class="btn-icon-close" id="btnCloseSignInModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="signInForm" class="form-grid-stack">
+          <div class="form-group">
+            <label for="loginEmail" data-i18n="lbl_email">Work Email</label>
+            <input type="email" id="loginEmail" class="form-input" placeholder="name@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword" data-i18n="lbl_password">Password</label>
+            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block margin-top-sm" data-i18n="btn_login">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="stripeCheckoutModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 data-i18n="modal_checkout_title">Complete Subscription</h3>
+        <button class="btn-icon-close" id="btnCloseCheckoutModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="checkout-summary-box">
+          <span data-i18n="lbl_selected_plan">Selected Plan:</span>
+          <strong id="modalPlanTitle">Professional Plan</strong>
+          <div class="modal-price-display" id="modalPlanPrice">$299.00 / month</div>
+        </div>
+
+        <form id="stripeSimulationForm" class="form-grid-stack margin-top-sm">
+          <div class="form-group">
+            <label for="stripeCardName" data-i18n="lbl_cardholder">Cardholder Name</label>
+            <input type="text" id="stripeCardName" class="form-input" placeholder="Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="stripeCardNum" data-i18n="lbl_cardnum">Card Number</label>
+            <input type="text" id="stripeCardNum" class="form-input" placeholder="4242 •••• •••• 4242" required>
+          </div>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label for="stripeExp" data-i18n="lbl_exp">Expiry (MM/YY)</label>
+              <input type="text" id="stripeExp" class="form-input" placeholder="12/28" required>
+            </div>
+            <div class="form-group">
+              <label for="stripeCvc" data-i18n="lbl_cvc">CVC</label>
+              <input type="text" id="stripeCvc" class="form-input" placeholder="123" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block margin-top-sm" id="btnConfirmStripePay">
+            🔒 <span data-i18n="btn_confirm_pay">Confirm & Subscribe</span>
+          </button>
+        </form>
+
+        <p class="text-sub-sm margin-top-sm" style="text-align: center;" data-i18n="stripe_notice">
+          256-bit SSL encrypted connection.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-popup">Notification message</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
